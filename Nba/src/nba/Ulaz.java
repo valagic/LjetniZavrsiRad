@@ -1,12 +1,27 @@
 package nba;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Ulaz {
 
 	public static Scanner scanner;
 	
+public static final String FORMAT_DATUM="dd.MM.yyyy.";
 	
+	public static Date ucitajDatum(String poruka) {
+		SimpleDateFormat df = new SimpleDateFormat(FORMAT_DATUM);
+		while(true) {
+			System.out.print(poruka);
+			try {
+				return df.parse(scanner.nextLine());
+			} catch (Exception e) {
+				System.out.println("Ne ispravan format datuma. "
+						+ "Primjer unosa: " + df.format(new Date()));
+			}
+		}
+	}
 	
 
 	public static int ucitajCijeliBroj (String poruka, String greska, int min, int max) {

@@ -31,6 +31,7 @@ public class Start {
 		System.out.println("2. Treneri");
 		System.out.println("3. Statistika");
 		System.out.println("4. Ekipe");
+		System.out.println("5. Utakmica");
 		System.out.println("5. Izlaz iz programa");
 		ucitajGlavnuAkciju();
 		
