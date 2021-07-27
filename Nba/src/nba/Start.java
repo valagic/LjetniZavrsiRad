@@ -10,11 +10,13 @@ public class Start {
 
 	private List<Igrac> igraci;
 	private List<Trener> treneri;
+	private List<Statistika> statistike;
 	
 	
 	public Start() {
 		igraci = new ArrayList<Igrac>();
 		treneri = new ArrayList<Trener>();
+		statistike = new ArrayList<Statistika>();
 		Ulaz.scanner = new Scanner(System.in);
 		glavniIzbornik();
 
@@ -40,6 +42,8 @@ public class Start {
 			break;
 		case 2 :
 			trenerIzbornik();
+		case 3 :
+			statistikaIzbornik();
 		case 6:
 			System.out.println("Program je zavrsio!");
 			return;
@@ -47,6 +51,55 @@ public class Start {
 		
 	}
 
+	private void statistikaIzbornik() {
+		System.out.println("************************");
+		System.out.println("Podizbornik 3.Statistike");
+		System.out.println("Odaberi opciju");
+		System.out.println("1.");
+		System.out.println("2.");
+		System.out.println("3.");
+		System.out.println("4.");
+		System.out.println("5.");
+		statistikaUcitajAkciju();
+		
+	}
+
+	private void statistikaUcitajAkciju() {
+		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 5)) {
+		case 1 ->  {
+			statistikaPregled();
+			statistikaIzbornik();
+		}
+		case 2 -> statistikaUnosNove();
+		case 3 -> statistikaPromjena();
+		case 4 -> statistikaBrisanje();
+		case 5 -> glavniIzbornik();
+	
+		}
+		
+	}
+
+	private void statistikaBrisanje() {
+		
+	}
+
+	private void statistikaPromjena() {
+		
+	}
+
+	private void statistikaUnosNove() {
+		
+	}
+
+	private void statistikaPregled() {
+		
+		
+	}
+
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	
 	private void trenerIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 2.Treneri");
