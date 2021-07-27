@@ -9,10 +9,12 @@ import nba.Ulaz;
 public class Start {
 
 	private List<Igrac> igraci;
+	private List<Trener> treneri;
 	
 	
 	public Start() {
 		igraci = new ArrayList<Igrac>();
+		treneri = new ArrayList<Trener>();
 		Ulaz.scanner = new Scanner(System.in);
 		glavniIzbornik();
 
@@ -36,6 +38,8 @@ public class Start {
 		case 1 :
 			igraciIzbornik();
 			break;
+		case 2 :
+			trenerIzbornik();
 		case 6:
 			System.out.println("Program je zavrsio!");
 			return;
@@ -43,10 +47,95 @@ public class Start {
 		
 	}
 
+	private void trenerIzbornik() {
+		System.out.println("************************");
+		System.out.println("Podizbornik 2.Treneri");
+		System.out.println("Odaberi opciju");
+		System.out.println("1. Pregled unesenih trenera");
+		System.out.println("2. Unos novog trenera");
+		System.out.println("3. Promjena postojeceg trenera");
+		System.out.println("4. Brisanje postojeceg trenera");
+		System.out.println("5. Povratak u prethodni izbornik");
+		trenerUcitajAkciju();
+		
+	}
+
+	
+	private void trenerUcitajAkciju() {
+		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 5)) {
+		case 1 ->  { 
+			trenerPregled();
+			trenerIzbornik(); }
+		case 2 -> trenerUnosNovog();
+		case 3 -> trenerPromjena();
+		case 4 -> trenerBrisanje();
+		case 5 -> glavniIzbornik();
+		}
+	}
+	
+
+	private void trenerBrisanje() {
+		trenerStavke("Trenutno dostupno u aplikaciji");
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za brisanje: ", "Niste unijeli cijeli broj", 1,
+				treneri.size());
+		treneri.remove(redniBroj - 1);
+		trenerIzbornik();
+		
+	}
+
+	private void trenerPromjena() {
+		trenerStavke("Trenutno dostupno u aplikaciji");
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				treneri.size());
+		Trener trenerZaPromjenu = treneri.get(redniBroj - 1);
+		trenerZaPromjenu = trenerPostaviVrijednost(trenerZaPromjenu);
+		treneri.set(redniBroj - 1, trenerZaPromjenu);
+		trenerIzbornik();
+	}
+
+	private void trenerUnosNovog() {
+		Trener t = new Trener();
+		t = trenerPostaviVrijednost(t);
+		treneri.add(t);
+		trenerIzbornik();
+	}
+
+	private Trener trenerPostaviVrijednost(Trener t) {
+		t.setIme(Ulaz.ucitajString("Unesi ime trenera: ", "Nisi unio dobro ime"));
+		t.setPrezime(Ulaz.ucitajString("Unesi prezime trenera: ", "Nisi unio dobro prezime"));
+		t.setEkipa(Ulaz.ucitajString("Unesi ime ekipe koju trenira: ", "Nisi unio dobro ime ekipe"));
+		
+		return t;
+	}
+
+	private void trenerPregled() {
+		trenerStavke("Pregled unesenih trenera");
+		
+	}
+
+	private void trenerStavke(String naslov) {
+		System.out.println(naslov);
+		System.out.println("-----------------");
+		if(treneri.isEmpty()) {
+			System.out.println("Nema unesenih trenera");
+		}else {
+			Trener t;
+			for(int i = 0; i < treneri.size();i++) {
+				t = treneri.get(i);
+				System.out.println((i+1)+ " " + t.getIme() + " " + t.getPrezime() + " " + t.getEkipa());
+			}
+		}
+		
+	}
+
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	
 	private void igraciIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 1.Igraci");
-		System.out.println("Odaberi akciju");
+		System.out.println("Odaberi opciju");
 		System.out.println("1. Pregled unesenih igraca");
 		System.out.println("2. Unos novog igraca");
 		System.out.println("3. Promjena postojeceg igraca");
