@@ -55,11 +55,11 @@ public class Start {
 		System.out.println("************************");
 		System.out.println("Podizbornik 3.Statistike");
 		System.out.println("Odaberi opciju");
-		System.out.println("1.");
-		System.out.println("2.");
-		System.out.println("3.");
-		System.out.println("4.");
-		System.out.println("5.");
+		System.out.println("1. Pregled statistike za igraca");
+		System.out.println("2. Unos nove statistike za igraca");
+		System.out.println("3. Promjena postojece statistike");
+		System.out.println("4. Brisanje postojece statistike");
+		System.out.println("5. Vracanje u prethodni izbornik");
 		statistikaUcitajAkciju();
 		
 	}
@@ -80,19 +80,60 @@ public class Start {
 	}
 
 	private void statistikaBrisanje() {
-		
+		statistikaStavke("Trenutno dostupno u aplikaciji");
+		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				statistike.size());
+		statistike.remove(rednaBroj-1);
+		statistikaIzbornik();
 	}
 
 	private void statistikaPromjena() {
-		
+		statistikaStavke("Trenutno dostupno u aplikaciji");
+		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				statistike.size());
+		Statistika statistikaZaPromjenu = statistike.get(rednaBroj - 1);
+		statistikaZaPromjenu = statisikaPostaviVrijednosti(statistikaZaPromjenu);
+		statistike.set(rednaBroj - 1, statistikaZaPromjenu);
+		statistikaIzbornik();
 	}
 
 	private void statistikaUnosNove() {
-		
+		Statistika s = new Statistika();
+		s = statisikaPostaviVrijednosti(s);
+		statistike.add(s);
+		statistikaIzbornik();
+	}
+
+	private Statistika statisikaPostaviVrijednosti(Statistika s) {
+		s.setPostotakSutaIzIgre(Ulaz.ucitajDouble("Unesi postotak suta iz igre: ", "Nisi unio dobar broj", 0, 100));
+		s.setPostotakSutaSlobodnaBacanja(Ulaz.ucitajDouble("Unesi postotak slobodnih bacanja: ", "Nisi unio dobar broj", 0, 100));
+		s.setBrojPoena(Ulaz.ucitajCijeliBroj("Unesi broj poena: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		s.setBrojSkokova(Ulaz.ucitajCijeliBroj("Unesi broj skokova: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		s.setBrojAsistencija(Ulaz.ucitajCijeliBroj("Unesi broj asistencija: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		s.setBrojStealova(Ulaz.ucitajCijeliBroj("Unesi broj stealova: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		s.setBrojBlokova(Ulaz.ucitajCijeliBroj("Unesi broj blokova: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		s.setBrojTurnovera(Ulaz.ucitajCijeliBroj("Unesi broj turnovera: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		return s;
 	}
 
 	private void statistikaPregled() {
+		statistikaStavke("Pregled statistike igraca");
 		
+	}
+
+	private void statistikaStavke(String naslov) {
+		System.out.println(naslov);
+		System.out.println("------------------------");
+		if(statistike.isEmpty()) {
+			System.out.println("Nema unesenih statistika");
+		}else {
+			Statistika s;
+			for(int i = 0; i < statistike.size(); i++) {
+				s = statistike.get(i);
+				System.out.println((i+1) + " " + s.getPostotakSutaIzIgre() + " " + s.getPostotakSutaSlobodnaBacanja() + " " + s.getBrojPoena() + " " + s.getBrojSkokova()
+				+ " " + s.getBrojAsistencija() + " " + s.getBrojStealova() + " " + s.getBrojBlokova() + " " + s.getBrojTurnovera());
+			}
+		}
 		
 	}
 
