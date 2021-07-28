@@ -11,12 +11,16 @@ public class Start {
 	private List<Igrac> igraci;
 	private List<Trener> treneri;
 	private List<Statistika> statistike;
+	private List<Ekipa> ekipe;
+	private List<Utakmica> utakmice;
 	
 	
 	public Start() {
 		igraci = new ArrayList<Igrac>();
 		treneri = new ArrayList<Trener>();
 		statistike = new ArrayList<Statistika>();
+		ekipe = new ArrayList<Ekipa>();
+		utakmice = new ArrayList<Utakmica>();
 		Ulaz.scanner = new Scanner(System.in);
 		glavniIzbornik();
 
@@ -44,6 +48,10 @@ public class Start {
 			trenerIzbornik();
 		case 3 :
 			statistikaIzbornik();
+		case 4 :
+			ekipaIzbornik();
+		case 5 :
+			utakmicaIzbornik();
 		case 6:
 			System.out.println("Program je zavrsio!");
 			return;
@@ -51,6 +59,171 @@ public class Start {
 		
 	}
 
+	private void utakmicaIzbornik() {
+		System.out.println("************************");
+		System.out.println("Podizbornik 5.Utakmice");
+		System.out.println("Odaberi opciju");
+		System.out.println("1. Pregled utakmica");
+		System.out.println("2. Unos nove utakmice");
+		System.out.println("3. Promjena postojece utakmice");
+		System.out.println("4. Brisanje postojece utakmice");
+		System.out.println("5. Vracanje u prethodni izbornik");
+		utakmicaUcitajAkciju();
+		
+	}
+
+	private void utakmicaUcitajAkciju() {
+		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 5)) {
+		case 1 -> { 
+			utakmicaPregled();
+			utakmicaIzbornik();
+		}
+		case 2 -> utakmicaUnosNove();
+		case 3 -> utakmicaPromjena();
+		case 4 -> utakmicaBrisanje();
+		case 5 -> glavniIzbornik();
+		}
+	}
+
+	private void utakmicaBrisanje() {
+		utakmicaStavke("Trenutno dostupno u aplikaciji");
+		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				utakmice.size());
+		utakmice.remove(rednaBroj-1);
+		utakmicaIzbornik();
+	}
+
+	private void utakmicaPromjena() {
+		utakmicaStavke("Trenutno dostupno u aplikaciji");
+		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				utakmice.size());
+		Utakmica utakmicaZaPromjenu = utakmice.get(rednaBroj - 1);
+		utakmicaZaPromjenu = utakmicaPostaviVrijednosti(utakmicaZaPromjenu);
+		utakmice.set(rednaBroj - 1, utakmicaZaPromjenu);
+		utakmicaIzbornik();
+	}
+
+	private void utakmicaUnosNove() {
+		Utakmica u = new Utakmica();
+		u = utakmicaPostaviVrijednosti(u);
+		utakmice.add(u);
+		utakmicaIzbornik();
+	}
+
+	private Utakmica utakmicaPostaviVrijednosti(Utakmica u) {
+		u.setDatumPocetka(Ulaz.ucitajDatum("Unesi datum početka: "));
+		u.setDomacaMomcad(Ulaz.ucitajString("Naziv domace momcadi: ", "Nisi unio dobar naziv"));
+		u.setGostujucaMomcad(Ulaz.ucitajString("Naziv gostujuce momcadi: ", "Nisi unio dobar naziv"));
+		u.setNazivDvorane(Ulaz.ucitajString("Unesi naziv dvorane: ", "Nisi unio dobar naziv"));
+		u.setRezultat(Ulaz.ucitajCijeliBroj("Unesi broj poena ekipa: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		return u;
+	}
+
+	private void utakmicaPregled() {
+		utakmicaStavke("Pregled utakmica");
+		
+	}
+
+	private void utakmicaStavke(String naslov) {
+		System.out.println(naslov);
+		System.out.println("------------------------");
+		if(utakmice.isEmpty()) {
+			System.out.println("Nema unesenih utakmica");
+		}else {
+			Utakmica u;
+		for(int i = 0; i < utakmice.size(); i++) {
+			u = utakmice.get(i);
+			System.out.println((i+1) + " " + u.getDatumPocetka() + " " +  u.getDomacaMomcad() + " " + u.getGostujucaMomcad() + " " + u.getNazivDvorane()
+			+ " " + u.getRezultat());
+			}
+		}
+		
+	}
+
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	
+	private void ekipaIzbornik() {
+		System.out.println("************************");
+		System.out.println("Podizbornik 4.Ekipe");
+		System.out.println("Odaberi opciju");
+		System.out.println("1. Pregled ekipa");
+		System.out.println("2. Unos nove ekipe");
+		System.out.println("3. Promjena postojece ekipe");
+		System.out.println("4. Brisanje postojece ekipe");
+		System.out.println("5. Vracanje u prethodni izbornik");
+		ekipaUcitajAkciju();
+	}
+
+	private void ekipaUcitajAkciju() {
+		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 5)) {
+		case 1 -> { 
+			ekipaPregled();
+			ekipaIzbornik();
+		}
+		case 2 -> ekipaUnosNove();
+		case 3 -> ekipaPromjena();
+		case 4 -> ekipaBrisanje();
+		case 5 -> glavniIzbornik();
+		}
+		
+	}
+
+	private void ekipaBrisanje() {
+		ekipaStavke("Trenutno dostupno u aplikaciji");
+		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				ekipe.size());
+		ekipe.remove(rednaBroj-1);
+		ekipaIzbornik();
+	}
+
+	private void ekipaPromjena() {
+		ekipaStavke("Trenutno dostupno u aplikaciji");
+		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				statistike.size());
+		Ekipa ekipaZaPromjenu = ekipe.get(rednaBroj - 1);
+		ekipaZaPromjenu = ekipaPostaviVrijednosti(ekipaZaPromjenu);
+		ekipe.set(rednaBroj - 1, ekipaZaPromjenu);
+		ekipaIzbornik();
+	}
+
+	private void ekipaUnosNove() {
+		Ekipa e = new Ekipa();
+		e = ekipaPostaviVrijednosti(e);
+		ekipe.add(e);
+		ekipaIzbornik();
+	}
+
+	private Ekipa ekipaPostaviVrijednosti(Ekipa e) {
+		e.setNaziv(Ulaz.ucitajString("Unesi naziv ekipe", "Nisi unio dobar naziv"));
+		return e;
+	}
+
+	private void ekipaPregled() {
+		ekipaStavke("Pregled ekipa");
+		
+	}
+
+	private void ekipaStavke(String naslov) {
+		System.out.println(naslov);
+		System.out.println("------------------------");
+		if(ekipe.isEmpty()) {
+			System.out.println("Nema unesenih ekipa");
+		}else {
+			Ekipa e;
+		for(int i = 0; i < ekipe.size(); i++) {
+			e = ekipe.get(i);
+			System.out.println((i+1) + " " + e.getNaziv());
+			}
+		}
+		
+	}
+
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	
 	private void statistikaIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 3.Statistike");
