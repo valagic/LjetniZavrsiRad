@@ -6,8 +6,12 @@ import java.util.Scanner;
 
 import nba.Ulaz;
 // potrebno napraviti link koji ce voditi na github
-// kod klase Igrac -> nepotrebno je unositi statistiku kod igraca
+// mozda napraviti neki prozor koji ce se pojaviti prije izbornika, tipa zelis li baciti oko na program ili ne
+// kod klase Igrac -> nepotrebno je unositi statistiku kod igraca 
+// u metodi igracStavke je potrebno obrisati nepotrebne podatke o statistici(ostaviti samo ime,prezime i naziv ekipe)
 // kod klase Utamica -> potrebno jos napraviti rezultat prve ekipe i rezultat druge ekipe, za sada je napravljeno da samo jedan broj mogu unijeti
+
+
 public class Start {
 
 	private List<Igrac> igraci;
