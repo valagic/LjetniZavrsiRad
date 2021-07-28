@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import nba.Ulaz;
-
+// potrebno napraviti link koji ce voditi na github
+// kod klase Igrac -> nepotrebno je unositi statistiku kod igraca
+// kod klase Utamica -> potrebno jos napraviti rezultat prve ekipe i rezultat druge ekipe, za sada je napravljeno da samo jedan broj mogu unijeti
 public class Start {
 
 	private List<Igrac> igraci;

@@ -1,7 +1,7 @@
 package nba;
 
 public class Igrac extends Statistika{
-	// nepotrebno je unositi statistiku kod igraca
+
 
 	private String ime;
 	private String prezime;
