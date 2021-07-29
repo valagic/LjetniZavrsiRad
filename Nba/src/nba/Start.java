@@ -1,15 +1,20 @@
 package nba;
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import nba.Ulaz;
-// potrebno napraviti link koji ce voditi na github
+// potrebno napraviti link koji ce voditi na github -> napraviti metodu
 // mozda napraviti neki prozor koji ce se pojaviti prije izbornika, tipa zelis li baciti oko na program ili ne
+// u metodi ucitajglavnuakciju probati napraviti za izlaz iz programa metodu
+// u metodi ucitajGlavnuAkciju mozda prebaciti na novu switch umjesto stare
+// pokusati malo popraviti izbornike od svih klasa, da to ljepse izgleda
 // kod klase Igrac -> nepotrebno je unositi statistiku kod igraca 
 // u metodi igracStavke je potrebno obrisati nepotrebne podatke o statistici(ostaviti samo ime,prezime i naziv ekipe)
-// kod klase Utamica -> potrebno jos napraviti rezultat prve ekipe i rezultat druge ekipe, za sada je napravljeno da samo jedan broj mogu unijeti
+// kod klase Utakmica -> potrebno jos napraviti rezultat prve ekipe i rezultat druge ekipe, za sada je napravljeno da samo jedan broj mogu unijeti
 
 
 public class Start {
@@ -20,6 +25,12 @@ public class Start {
 	private List<Ekipa> ekipe;
 	private List<Utakmica> utakmice;
 	
+	public static final String poveznicaEraDijagram = "https://github.com/valagic/NBA/blob/main/era%20dijagram.png";
+	public static final String poveznicaZaGithub = "https://github.com/valagic/LjetniZavrsiRad";
+	
+	
+
+	
 	
 	public Start() {
 		igraci = new ArrayList<Igrac>();
@@ -28,9 +39,67 @@ public class Start {
 		ekipe = new ArrayList<Ekipa>();
 		utakmice = new ArrayList<Utakmica>();
 		Ulaz.scanner = new Scanner(System.in);
-		glavniIzbornik();
+		pocetniEkran();
+		//glavniIzbornik();
 
 	}
+
+	private void pocetniEkran() {
+		System.out.println("****************");
+		System.out.println("Moj prvi program");
+		System.out.println("****************");
+		System.out.println("1. Udji u aplikaciju");
+		System.out.println("2. Ovo je link za github");
+		System.out.println("3. Ovo je link za era dijagram");
+		System.out.println("4. Informacije o programu");
+		ucitajPocetnuAkciju();
+		
+	}
+
+	private void ucitajPocetnuAkciju() {
+		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 4)) {
+		case 1 -> glavniIzbornik();
+		case 2 -> poveznicaZaGithub();
+		case 3 -> poveznicaZaEraDijagram();
+		case 4 -> informacijeOProgramu();
+		}
+		
+	}
+
+	private void informacijeOProgramu() {
+		System.out.println("ovo sam ja napravio");
+	}
+
+	private void poveznicaZaGithub() {
+		try {
+			Desktop desktop = java.awt.Desktop.getDesktop();
+			desktop.browse(new URI(poveznicaZaGithub));
+		} catch (Exception e) {
+			System.out.println("Dogodila se greška. Pokušajte ponovno kasnije.");
+		}
+	}
+	
+	private void poveznicaZaEraDijagram() {
+		try {
+			Desktop desktop = java.awt.Desktop.getDesktop();
+			desktop.browse(new URI(poveznicaEraDijagram));
+		} catch (Exception e) {
+			System.out.println("Dogodila se greška. Pokušajte ponovno kasnije.");
+		}
+	}
+	
+	//private void //pocetniEkran() { -> koristiti switch naredbu
+		// ulaz na glavniIzbornik
+		// ulaz na link nba ljetni rad
+		// ulaz na link era dijagram
+	
+	// private void ucitajPocetnuAkciju() {
+
+	// case 1 glavniizbornik
+	// case 2 link na github
+	// case 3 link na dijagram
+		
+	//}
 
 	private void glavniIzbornik() {
 		System.out.println("***** NBA *****");
@@ -44,8 +113,10 @@ public class Start {
 		ucitajGlavnuAkciju();
 		
 	}
+	
+	
 
-	private void ucitajGlavnuAkciju() {
+	private void ucitajGlavnuAkciju() { // potrebno prebaciti u novu switch naredbu
 		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 6)) {
 		case 1 :
 			igraciIzbornik();
@@ -62,9 +133,34 @@ public class Start {
 			System.out.println("Program je zavrsio!");
 			return;
 		}
+		/* ovo je za case 6 -> kreira se metoda
+		 * private void izlaz() {
+		 * 	try{
+		 * while(true) {
+		 * String izlaz = scanner.nextLine().trim().toLowerCase();
+		 * 
+		 * if(izlaz.equals("da")) {
+		 * syso("Pogram je zavrsio, dodjite opet");
+		 * break;
+		 * } else {
+		 * glavniIzbornik();
+		 * }
+		 * } 
+		 * } catch(Exception e) {
+		 * }
+		 * }
+		 *  */
 		
 	}
 
+	// kada se pokrene aplikacija kod utakmica bilo bi dobro napraviti kod pregleda utakmica da izgleda tipa ovako
+	// datum pocetka : 28.07.2021.
+	// domaca momcad : ime
+	// gostujuca momcad : ime
+	// naziv dvorane : ime
+	// rezultat : domaca momcad rezultat : rezultat gostujuca momcad
+	
+	
 	private void utakmicaIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 5.Utakmice");
@@ -150,6 +246,10 @@ public class Start {
 	/////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	
+	// kada se pokrene pregled ekipa trebalo bi napraviti da izlgeda tipa
+	// ime momcadi : utah jazz
+	
+	
 	private void ekipaIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 4.Ekipe");
@@ -229,6 +329,16 @@ public class Start {
 	/////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
+	
+	// kada se radi pregled statistike potrebno je napraviti da izgleda tipa
+	//	postotak suta iz igre : 
+	// postotak slobodna :
+	// poeni
+	// skokovi
+	// assisti
+	// stealovi
+	// blokovi
+	// TO
 	
 	private void statistikaIzbornik() {
 		System.out.println("************************");
@@ -320,6 +430,12 @@ public class Start {
 	/////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	
+	// kod pregleda napraviti
+	// ime :
+	// przime :
+	// ekipu koju trenira :
+	
+	
 	private void trenerIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 2.Treneri");
@@ -404,6 +520,12 @@ public class Start {
 	/////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
+	
+	// kod pregleda napraviti
+	// ime
+	// prezime
+	// za koju ekipu igra
+	
 	
 	private void igraciIzbornik() {
 		System.out.println("************************");
