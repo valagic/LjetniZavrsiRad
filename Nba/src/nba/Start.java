@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import nba.Ulaz;
-// potrebno napraviti link koji ce voditi na github -> napraviti metodu
-// mozda napraviti neki prozor koji ce se pojaviti prije izbornika, tipa zelis li baciti oko na program ili ne
 // u metodi ucitajglavnuakciju probati napraviti za izlaz iz programa metodu
 // u metodi ucitajGlavnuAkciju mozda prebaciti na novu switch umjesto stare
 // pokusati malo popraviti izbornike od svih klasa, da to ljepse izgleda
@@ -24,13 +22,10 @@ public class Start {
 	private List<Statistika> statistike;
 	private List<Ekipa> ekipe;
 	private List<Utakmica> utakmice;
+	private Scanner scanner;
 	
 	public static final String poveznicaEraDijagram = "https://github.com/valagic/NBA/blob/main/era%20dijagram.png";
 	public static final String poveznicaZaGithub = "https://github.com/valagic/LjetniZavrsiRad";
-	
-	
-
-	
 	
 	public Start() {
 		igraci = new ArrayList<Igrac>();
@@ -40,23 +35,24 @@ public class Start {
 		utakmice = new ArrayList<Utakmica>();
 		Ulaz.scanner = new Scanner(System.in);
 		pocetniEkran();
-		//glavniIzbornik();
+		//glavniIzbornik(); ovo vise nije potrebno jer imam novi pocetni ekran
 
 	}
-
 	private void pocetniEkran() {
-		System.out.println("****************");
-		System.out.println("Moj prvi program");
-		System.out.println("****************");
-		System.out.println("1. Udji u aplikaciju");
-		System.out.println("2. Ovo je link za github");
-		System.out.println("3. Ovo je link za era dijagram");
+		System.out.println("*********************");
+		System.out.println("Moja prva aplikacija");
+		System.out.println("*********************");
+		System.out.println("");
+		System.out.println("1. Ulaz u aplikaciju NBA");
+		System.out.println("2. Link za github");
+		System.out.println("3. Link za era dijagram");
 		System.out.println("4. Informacije o programu");
 		ucitajPocetnuAkciju();
 		
 	}
 
 	private void ucitajPocetnuAkciju() {
+		System.out.println("");
 		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 4)) {
 		case 1 -> glavniIzbornik();
 		case 2 -> poveznicaZaGithub();
@@ -65,12 +61,19 @@ public class Start {
 		}
 		
 	}
-
+	// napraviti da ako korisnika zanima o aplikaciji da se prebaci odma na nba glavni izbornik
 	private void informacijeOProgramu() {
-		System.out.println("ovo sam ja napravio");
+		System.out.println("");
+		System.out.println("Aplikacija o NBA");
+		System.out.println("");
+		System.out.println("U ovoj se aplikaciju mogu dodavati igraci,");
+		System.out.println("mijenjati postojece, dodavati njihovu statistiku");
+		System.out.println("i sve to brisati.");
+		System.out.println("");
+		System.out.println("Aplikaciju je napravio Vedran Alagić");
 	}
 
-	private void poveznicaZaGithub() {
+	private void poveznicaZaGithub() { 
 		try {
 			Desktop desktop = java.awt.Desktop.getDesktop();
 			desktop.browse(new URI(poveznicaZaGithub));
@@ -87,19 +90,7 @@ public class Start {
 			System.out.println("Dogodila se greška. Pokušajte ponovno kasnije.");
 		}
 	}
-	
-	//private void //pocetniEkran() { -> koristiti switch naredbu
-		// ulaz na glavniIzbornik
-		// ulaz na link nba ljetni rad
-		// ulaz na link era dijagram
-	
-	// private void ucitajPocetnuAkciju() {
 
-	// case 1 glavniizbornik
-	// case 2 link na github
-	// case 3 link na dijagram
-		
-	//}
 
 	private void glavniIzbornik() {
 		System.out.println("***** NBA *****");
@@ -116,43 +107,44 @@ public class Start {
 	
 	
 
-	private void ucitajGlavnuAkciju() { // potrebno prebaciti u novu switch naredbu
+	private void ucitajGlavnuAkciju() { 
 		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 6)) {
-		case 1 :
-			igraciIzbornik();
-			break;
-		case 2 :
-			trenerIzbornik();
-		case 3 :
-			statistikaIzbornik();
-		case 4 :
-			ekipaIzbornik();
-		case 5 :
-			utakmicaIzbornik();
-		case 6:
-			System.out.println("Program je zavrsio!");
-			return;
+		case 1 -> igraciIzbornik();
+
+		case 2 -> trenerIzbornik();
+			
+		case 3 -> statistikaIzbornik();
+			
+		case 4 -> ekipaIzbornik();
+			
+		case 5 -> utakmicaIzbornik();
+			
+		case 6 ->  {
+					System.out.println("Jeste li sigurni da zelite izaci iz programa, ako jeste upisite da ");
+					//izlaz(); potrebno doraditi da korisnika pita zeli li izaci iz programa, ako kaze da da izadje ako kaze ne da ga vrati na glavniIzbornik
+					
+					}
 		}
-		/* ovo je za case 6 -> kreira se metoda
-		 * private void izlaz() {
-		 * 	try{
-		 * while(true) {
-		 * String izlaz = scanner.nextLine().trim().toLowerCase();
-		 * 
-		 * if(izlaz.equals("da")) {
-		 * syso("Pogram je zavrsio, dodjite opet");
-		 * break;
-		 * } else {
-		 * glavniIzbornik();
-		 * }
-		 * } 
-		 * } catch(Exception e) {
-		 * }
-		 * }
-		 *  */
-		
 	}
 
+	/*private void izlaz() {
+		try {
+			while(true) {
+				
+				String izlaz = scanner.nextLine().trim().toLowerCase();
+				if(izlaz.equals("da")) {
+					System.out.println("Program je zavrsio, dodjite nam opet");
+					break;
+				} else {
+					glavniIzbornik();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Dogodila se greska, pokusajte ponovno kasnije");
+		}
+		
+	}*/
+	
 	// kada se pokrene aplikacija kod utakmica bilo bi dobro napraviti kod pregleda utakmica da izgleda tipa ovako
 	// datum pocetka : 28.07.2021.
 	// domaca momcad : ime
