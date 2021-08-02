@@ -7,12 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import nba.Ulaz;
-// u metodi ucitajglavnuakciju probati napraviti za izlaz iz programa metodu
-// u metodi ucitajGlavnuAkciju mozda prebaciti na novu switch umjesto stare
-// pokusati malo popraviti izbornike od svih klasa, da to ljepse izgleda
-// kod klase Igrac -> nepotrebno je unositi statistiku kod igraca 
-// u metodi igracStavke je potrebno obrisati nepotrebne podatke o statistici(ostaviti samo ime,prezime i naziv ekipe)
-// kod klase Utakmica -> potrebno jos napraviti rezultat prve ekipe i rezultat druge ekipe, za sada je napravljeno da samo jedan broj mogu unijeti
+
 
 
 public class Start {
@@ -128,7 +123,7 @@ public class Start {
 			
 		case 5 -> utakmicaIzbornik();
 			
-		case 6 ->  {
+		case 6 ->  { 
 					String izlaz = Ulaz.ucitajIzlaz("jesi siguran da hoces izaci", "greska");
 					System.out.println("");
 					if(izlaz.trim().toLowerCase().equals("da")) {
@@ -139,14 +134,7 @@ public class Start {
 				}
 		}
 	}
-	// kada se pokrene aplikacija kod utakmica bilo bi dobro napraviti kod pregleda utakmica da izgleda tipa ovako
-	// datum pocetka : 28.07.2021.
-	// domaca momcad : ime
-	// gostujuca momcad : ime
-	// naziv dvorane : ime
-	// rezultat : domaca momcad rezultat : rezultat gostujuca momcad
-	
-	
+
 	private void utakmicaIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 5.Utakmice");
@@ -221,21 +209,14 @@ public class Start {
 			Utakmica u;
 		for(int i = 0; i < utakmice.size(); i++) {
 			u = utakmice.get(i);
-			System.out.println((i+1) + " " + u.getDatumPocetka() + " " +  u.getDomacaMomcad() + " " + u.getGostujucaMomcad() + " " + u.getNazivDvorane()
-			+ " " + u.getRezultat());
+			System.out.println((i+1) + ". \nDatum pocetka utakmice je: " + u.getDatumPocetka() + "\nIme domace momcadi:  " +  u.getDomacaMomcad() + "\nIme gostujuce momcadi " 
+			+ u.getGostujucaMomcad() + "\nNaziv dvorane: " + u.getNazivDvorane()
+			+ "\nRezultat: " + u.getRezultat());
 			}
 		}
 		
 	}
 
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	
-	// kada se pokrene pregled ekipa trebalo bi napraviti da izlgeda tipa
-	// ime momcadi : utah jazz
-	
-	
 	private void ekipaIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 4.Ekipe");
@@ -306,26 +287,12 @@ public class Start {
 			Ekipa e;
 		for(int i = 0; i < ekipe.size(); i++) {
 			e = ekipe.get(i);
-			System.out.println((i+1) + " " + e.getNaziv());
+			System.out.println((i+1) + ". \nNaziv ekipe: " + e.getNaziv());
 			}
 		}
 		
 	}
 
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	
-	// kada se radi pregled statistike potrebno je napraviti da izgleda tipa
-	//	postotak suta iz igre : 
-	// postotak slobodna :
-	// poeni
-	// skokovi
-	// assisti
-	// stealovi
-	// blokovi
-	// TO
-	
 	private void statistikaIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 3.Statistike");
@@ -405,23 +372,15 @@ public class Start {
 			Statistika s;
 			for(int i = 0; i < statistike.size(); i++) {
 				s = statistike.get(i);
-				System.out.println((i+1) + " " + s.getPostotakSutaIzIgre() + " " + s.getPostotakSutaSlobodnaBacanja() + " " + s.getBrojPoena() + " " + s.getBrojSkokova()
-				+ " " + s.getBrojAsistencija() + " " + s.getBrojStealova() + " " + s.getBrojBlokova() + " " + s.getBrojTurnovera());
+				System.out.println((i+1) + ". \nPostotak suta iz igre: " + s.getPostotakSutaIzIgre() + "\nPostotak suta slobodna bacanja:  " 
+				+ s.getPostotakSutaSlobodnaBacanja() + "\nBroj poena:  " + s.getBrojPoena() + "\nBroj skokova:  " + s.getBrojSkokova()
+				+ "\nBroj asistencija: " + s.getBrojAsistencija() + "\nBroj stealova: " + s.getBrojStealova() + "\nBroj blokova: " + s.getBrojBlokova() 
+				+ "\nBroj turnovera: " + s.getBrojTurnovera());
 			}
 		}
 		
 	}
 
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	
-	// kod pregleda napraviti
-	// ime :
-	// przime :
-	// ekipu koju trenira :
-	
-	
 	private void trenerIzbornik() {
 		System.out.println("************************");
 		System.out.println("Podizbornik 2.Treneri");
@@ -497,21 +456,12 @@ public class Start {
 			Trener t;
 			for(int i = 0; i < treneri.size();i++) {
 				t = treneri.get(i);
-				System.out.println((i+1)+ " " + t.getIme() + " " + t.getPrezime() + " " + t.getEkipa());
+				System.out.println((i+1)+ ". \nIme trenera: " + t.getIme() + "\nPrezime trenera: " + t.getPrezime() + "\nNaziv ekipe koju trenira: " + t.getEkipa());
 			}
 		}
 		
 	}
 
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	
-	// kod pregleda napraviti
-	// ime
-	// prezime
-	// za koju ekipu igra
-	
 	
 	private void igraciIzbornik() {
 		System.out.println("************************");
@@ -569,15 +519,6 @@ public class Start {
 		ii.setIme(Ulaz.ucitajString("Unesi ime kosarkasa: ", "Nisi unio ime"));
 		ii.setPrezime(Ulaz.ucitajString("Unesi prezime kosarkasa: ", "Nisi unio prezime"));
 		ii.setNazivEkipe(Ulaz.ucitajString("Unesi ime ekipe za koju igra: ", "Nisi unio ime ekipe"));
-		ii.setBrojPoena(Ulaz.ucitajCijeliBroj("Unesi broj poena: ", "Poeni moraju biti cijeli broj", 0, Integer.MAX_VALUE));
-		ii.setBrojAsistencija(Ulaz.ucitajCijeliBroj("Unesi broj asistencija: ", "Asistencije moraju biti cijeli broj", 0, Integer.MAX_VALUE));
-		ii.setBrojSkokova(Ulaz.ucitajCijeliBroj("Unesi broj skokova: ", "Skokovi moraju biti cijeli broj", 0, Integer.MAX_VALUE));
-		ii.setBrojStealova(Ulaz.ucitajCijeliBroj("Unesi broj stealova: ", "Stelovi moraju biti cijeli broj", 0, Integer.MAX_VALUE));
-		ii.setBrojBlokova(Ulaz.ucitajCijeliBroj("Unesi broj blokova: ", "Blokovi moraju biti cijeli broj", 0, Integer.MAX_VALUE));
-		ii.setBrojTurnovera(Ulaz.ucitajCijeliBroj("Unesi broj turnovera: ", "Turnoveri moraju biti cijeli broj", 0, Integer.MAX_VALUE));
-		ii.setPostotakSutaIzIgre(Ulaz.ucitajDouble("Unesi postotak suta iz igre: ", "Nisi unio dobar broj", 0, Double.MAX_VALUE));
-		ii.setPostotakSutaSlobodnaBacanja(Ulaz.ucitajDouble("Unesi postotak slobodnih bacanja: ", "Nisi unio dobar broj", 0, Double.MAX_VALUE));
-		
 		return ii;
 	}
 
@@ -594,9 +535,7 @@ public class Start {
 			Igrac ii;
 			for(int i = 0 ;i < igraci.size();i++) {
 				ii = igraci.get(i);
-				System.out.println((i+1) + ". " + ii.getIme() + " " + ii.getPrezime() + " " + ii.getNazivEkipe() + " "
-				+ ii.getBrojPoena() + " " + ii.getBrojAsistencija() + " " + ii.getBrojSkokova() + " " + ii.getBrojStealova()
-				+ " " + ii.getBrojBlokova() + " " + ii.getBrojTurnovera() + " " + ii.getPostotakSutaIzIgre() + " " + ii.getPostotakSutaSlobodnaBacanja());
+				System.out.println((i+1) + ". \nIme igraca: " + ii.getIme() + "\nPrezime igraca: " + ii.getPrezime() +  "\nNaziv ekipe za koju igra: " + ii.getNazivEkipe());
 			}
 		}
 		

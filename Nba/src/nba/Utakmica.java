@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Utakmica {
 
-
+	// kod klase Utakmica -> potrebno jos napraviti rezultat prve ekipe i rezultat druge ekipe, za sada je napravljeno da samo jedan broj mogu unijeti
 	private Date datumPocetka;
 	private String domacaMomcad;
 	private String gostujucaMomcad;

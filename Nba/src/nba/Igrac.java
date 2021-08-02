@@ -1,6 +1,6 @@
 package nba;
 
-public class Igrac extends Statistika{
+public class Igrac{
 
 
 	private String ime;
