@@ -22,7 +22,7 @@ public class Start {
 	private List<Statistika> statistike;
 	private List<Ekipa> ekipe;
 	private List<Utakmica> utakmice;
-	private Scanner scanner;
+	//private Scanner scanner;
 	
 	public static final String poveznicaEraDijagram = "https://github.com/valagic/NBA/blob/main/era%20dijagram.png";
 	public static final String poveznicaZaGithub = "https://github.com/valagic/LjetniZavrsiRad";
@@ -35,7 +35,7 @@ public class Start {
 		utakmice = new ArrayList<Utakmica>();
 		Ulaz.scanner = new Scanner(System.in);
 		pocetniEkran();
-		//glavniIzbornik(); ovo vise nije potrebno jer imam novi pocetni ekran
+		
 
 	}
 	private void pocetniEkran() {
@@ -61,7 +61,7 @@ public class Start {
 		}
 		
 	}
-	// napraviti da ako korisnika zanima o aplikaciji da se prebaci odma na nba glavni izbornik
+
 	private void informacijeOProgramu() {
 		System.out.println("");
 		System.out.println("Aplikacija o NBA");
@@ -71,6 +71,17 @@ public class Start {
 		System.out.println("i sve to brisati.");
 		System.out.println("");
 		System.out.println("Aplikaciju je napravio Vedran Alagić");
+		System.out.println("");
+		String informacije = Ulaz.ucitajInformacije("Ako zelis saznati vise o programu upisi da: ", "Nisi upisao da");
+		if(informacije.toLowerCase().equals("da")) {
+			System.out.println("");
+			glavniIzbornik();
+			
+		}else {
+			System.out.println("");
+			pocetniEkran();
+		}
+		
 	}
 
 	private void poveznicaZaGithub() { 
@@ -181,19 +192,19 @@ public class Start {
 
 	private void utakmicaBrisanje() {
 		utakmicaStavke("Trenutno dostupno u aplikaciji");
-		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
 				utakmice.size());
-		utakmice.remove(rednaBroj-1);
+		utakmice.remove(redniBroj-1);
 		utakmicaIzbornik();
 	}
 
 	private void utakmicaPromjena() {
 		utakmicaStavke("Trenutno dostupno u aplikaciji");
-		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
 				utakmice.size());
-		Utakmica utakmicaZaPromjenu = utakmice.get(rednaBroj - 1);
+		Utakmica utakmicaZaPromjenu = utakmice.get(redniBroj - 1);
 		utakmicaZaPromjenu = utakmicaPostaviVrijednosti(utakmicaZaPromjenu);
-		utakmice.set(rednaBroj - 1, utakmicaZaPromjenu);
+		utakmice.set(redniBroj - 1, utakmicaZaPromjenu);
 		utakmicaIzbornik();
 	}
 
@@ -270,19 +281,19 @@ public class Start {
 
 	private void ekipaBrisanje() {
 		ekipaStavke("Trenutno dostupno u aplikaciji");
-		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
 				ekipe.size());
-		ekipe.remove(rednaBroj-1);
+		ekipe.remove(redniBroj-1);
 		ekipaIzbornik();
 	}
 
 	private void ekipaPromjena() {
 		ekipaStavke("Trenutno dostupno u aplikaciji");
-		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
 				statistike.size());
-		Ekipa ekipaZaPromjenu = ekipe.get(rednaBroj - 1);
+		Ekipa ekipaZaPromjenu = ekipe.get(redniBroj - 1);
 		ekipaZaPromjenu = ekipaPostaviVrijednosti(ekipaZaPromjenu);
-		ekipe.set(rednaBroj - 1, ekipaZaPromjenu);
+		ekipe.set(redniBroj - 1, ekipaZaPromjenu);
 		ekipaIzbornik();
 	}
 
@@ -362,19 +373,19 @@ public class Start {
 
 	private void statistikaBrisanje() {
 		statistikaStavke("Trenutno dostupno u aplikaciji");
-		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
 				statistike.size());
-		statistike.remove(rednaBroj-1);
+		statistike.remove(redniBroj-1);
 		statistikaIzbornik();
 	}
 
 	private void statistikaPromjena() {
 		statistikaStavke("Trenutno dostupno u aplikaciji");
-		int rednaBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberite redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
 				statistike.size());
-		Statistika statistikaZaPromjenu = statistike.get(rednaBroj - 1);
+		Statistika statistikaZaPromjenu = statistike.get(redniBroj - 1);
 		statistikaZaPromjenu = statisikaPostaviVrijednosti(statistikaZaPromjenu);
-		statistike.set(rednaBroj - 1, statistikaZaPromjenu);
+		statistike.set(redniBroj - 1, statistikaZaPromjenu);
 		statistikaIzbornik();
 	}
 

@@ -85,4 +85,21 @@ public static final String FORMAT_DATUM="dd.MM.yyyy.";
 		return s;
 	}
 	
-}
+	public static String ucitajInformacije(String poruka, String greska) {
+		String s = "";
+		while(true) {
+			System.out.print(poruka);
+			s = scanner.nextLine();
+			if(s.trim().toLowerCase().equals("da")){
+				
+			}
+				
+			break;
+		}
+		
+		return s;
+	}
+	
+	}
+	
+
