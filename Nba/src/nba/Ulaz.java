@@ -100,6 +100,20 @@ public static final String FORMAT_DATUM="dd.MM.yyyy.";
 		return s;
 	}
 	
+	public static String ucitajIzlaz(String poruka, String greska) {
+		String i = "";
+		while(true) {
+			System.out.println(poruka);
+			i = scanner.nextLine();
+			if(i.trim().toLowerCase().equals("da")) {
+				
+			}
+			break;
+		}
+		return i;
+	}
+	
+	
 	}
 	
 

@@ -116,8 +116,6 @@ public class Start {
 		
 	}
 	
-	
-
 	private void ucitajGlavnuAkciju() { 
 		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 6)) {
 		case 1 -> igraciIzbornik();
@@ -131,31 +129,16 @@ public class Start {
 		case 5 -> utakmicaIzbornik();
 			
 		case 6 ->  {
-					System.out.println("Jeste li sigurni da zelite izaci iz programa, ako jeste upisite da ");
-					//izlaz(); potrebno doraditi da korisnika pita zeli li izaci iz programa, ako kaze da da izadje ako kaze ne da ga vrati na glavniIzbornik
-					
+					String izlaz = Ulaz.ucitajIzlaz("jesi siguran da hoces izaci", "greska");
+					System.out.println("");
+					if(izlaz.trim().toLowerCase().equals("da")) {
+						 System.exit(0);
+					} else {
+						glavniIzbornik();
 					}
+				}
 		}
 	}
-
-	/*private void izlaz() {
-		try {
-			while(true) {
-				
-				String izlaz = scanner.nextLine().trim().toLowerCase();
-				if(izlaz.equals("da")) {
-					System.out.println("Program je zavrsio, dodjite nam opet");
-					break;
-				} else {
-					glavniIzbornik();
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("Dogodila se greska, pokusajte ponovno kasnije");
-		}
-		
-	}*/
-	
 	// kada se pokrene aplikacija kod utakmica bilo bi dobro napraviti kod pregleda utakmica da izgleda tipa ovako
 	// datum pocetka : 28.07.2021.
 	// domaca momcad : ime
