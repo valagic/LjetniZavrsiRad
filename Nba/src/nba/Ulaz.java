@@ -89,15 +89,17 @@ public static final String FORMAT_DATUM="dd.MM.yyyy.";
 		String s = "";
 		while(true) {
 			System.out.print(poruka);
-			s = scanner.nextLine();
-			if(s.trim().toLowerCase().equals("da")){
-				
+			s = scanner.nextLine().trim().toLowerCase();
+			if(s.equals("da")) {
+				return s;
 			}
-				
-			break;
+			if(s.equals("ne")) {
+				return s;
+			}
+			
 		}
 		
-		return s;
+		
 	}
 	
 	public static String ucitajIzlaz(String poruka, String greska) {
@@ -105,9 +107,9 @@ public static final String FORMAT_DATUM="dd.MM.yyyy.";
 		while(true) {
 			System.out.println(poruka);
 			i = scanner.nextLine();
-			if(i.trim().toLowerCase().equals("da")) {
+			/*if(i.trim().toLowerCase().equals("da")) {
 				
-			}
+			}*/
 			break;
 		}
 		return i;
