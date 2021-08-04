@@ -39,7 +39,7 @@ public class Start {
 		System.out.println("*********************");
 		System.out.println("");
 		System.out.println("1. Ulaz u aplikaciju NBA");
-		System.out.println("2. Link za github");
+		System.out.println("2. Link za github - kod");
 		System.out.println("3. Link za era dijagram");
 		System.out.println("4. Informacije o programu");
 		ucitajPocetnuAkciju();
@@ -62,7 +62,7 @@ public class Start {
 		System.out.println("Aplikacija o NBA");
 		System.out.println("");
 		System.out.println("U ovoj se aplikaciju mogu dodavati igraci,");
-		System.out.println("mijenjati postojece, dodavati njihovu statistiku");
+		System.out.println("mijenjati postojeci, dodavati njihovu statistiku");
 		System.out.println("i sve to brisati.");
 		System.out.println("");
 		System.out.println("Aplikaciju je napravio Vedran Alagić");
@@ -366,6 +366,9 @@ public class Start {
 	}
 
 	private Statistika statisikaPostaviVrijednosti(Statistika s) {
+		s.setIme(Ulaz.ucitajString("Unesi ime igraca: ", "Nisi unio ime"));
+		s.setPrezime(Ulaz.ucitajString("Unesi prezime igraca: ", "Nisi unio prezime"));
+		s.setNazivEkipe(Ulaz.ucitajString("Unesi naziv ekipe za koju igra: ", "Nisi unio ime ekipe"));
 		s.setPostotakSutaIzIgre(Ulaz.ucitajDouble("Unesi postotak suta iz igre: ", "Nisi unio dobar broj", 0, 100));
 		s.setPostotakSutaSlobodnaBacanja(Ulaz.ucitajDouble("Unesi postotak slobodnih bacanja: ", "Nisi unio dobar broj", 0, 100));
 		s.setBrojPoena(Ulaz.ucitajCijeliBroj("Unesi broj poena: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
@@ -391,7 +394,8 @@ public class Start {
 			Statistika s;
 			for(int i = 0; i < statistike.size(); i++) {
 				s = statistike.get(i);
-				System.out.println((i+1) + ". \nPostotak suta iz igre: " + s.getPostotakSutaIzIgre() + "\nPostotak suta slobodna bacanja:  " 
+				System.out.println((i+1) + ". \nIme igraca: " + s.getIme() + "\nPrezime igraca: " + s.getPrezime() + "\nIme ekipe: " + s.getNazivEkipe() 
+				+ "\nPostotak suta iz igre: " + s.getPostotakSutaIzIgre() + "\nPostotak suta slobodna bacanja:  " 
 				+ s.getPostotakSutaSlobodnaBacanja() + "\nBroj poena:  " + s.getBrojPoena() + "\nBroj skokova:  " + s.getBrojSkokova()
 				+ "\nBroj asistencija: " + s.getBrojAsistencija() + "\nBroj stealova: " + s.getBrojStealova() + "\nBroj blokova: " + s.getBrojBlokova() 
 				+ "\nBroj turnovera: " + s.getBrojTurnovera());

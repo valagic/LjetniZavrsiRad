@@ -1,6 +1,6 @@
 package nba;
 
-public class Statistika{
+public class Statistika extends Igrac{
 
 	private double postotakSutaIzIgre;
 	private double postotakSutaSlobodnaBacanja;
