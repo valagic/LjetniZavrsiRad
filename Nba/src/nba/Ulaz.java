@@ -90,31 +90,48 @@ public static final String FORMAT_DATUM="dd.MM.yyyy.";
 		while(true) {
 			System.out.print(poruka);
 			s = scanner.nextLine().trim().toLowerCase();
-			if(s.equals("da")) {
-				return s;
-			}
-			if(s.equals("ne")) {
-				return s;
-			}
-			
+			/*if(s.equals("da")) {
+			return s;
+		}
+		if(s.equals("ne")) {
+			return s;
+		}*/
+			break;
 		}
 		
-		
+		return s;
 	}
 	
 	public static String ucitajIzlaz(String poruka, String greska) {
 		String i = "";
 		while(true) {
 			System.out.println(poruka);
-			i = scanner.nextLine();
-			/*if(i.trim().toLowerCase().equals("da")) {
-				
+			i = scanner.nextLine().trim().toLowerCase();
+			/*if(s.equals("da")) {
+				return s;
+			}
+			if(s.equals("ne")) {
+				return s;
 			}*/
 			break;
 		}
 		return i;
 	}
 	
+	public static  boolean daIliNe (String poruka, String greska) {
+		String upit = "";
+		while(true) {
+			System.out.println(poruka);
+			upit = scanner.nextLine();
+			if(upit.trim().toLowerCase().equals("da")) {
+				return true;
+			}
+			if(upit.trim().toLowerCase().equals("ne")) {
+				return false;
+			}
+			System.out.println(greska + "Molimo unesite da ili ne");
+		}
+	}
 	
 	}
 	

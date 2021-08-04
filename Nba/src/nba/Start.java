@@ -67,8 +67,17 @@ public class Start {
 		System.out.println("");
 		System.out.println("Aplikaciju je napravio Vedran Alagić");
 		System.out.println("");
-		String informacije = Ulaz.ucitajInformacije("Ako zelis saznati vise o programu upisi da: ", "Nisi upisao da");
-		if(informacije.toLowerCase().equals("da")) {
+		/*String informacije = Ulaz.ucitajInformacije("Ako zelis saznati vise o programu upisi da: ", "Nisi upisao da");
+		if(informacije.equals("da")) {
+			System.out.println("");
+			glavniIzbornik();
+			
+		}else {
+			System.out.println("");
+			pocetniEkran();
+		}
+		*/
+		if(Ulaz.daIliNe("Ako zelite saznati vise o programu upisite da, u suprotnom ne", "")) {
 			System.out.println("");
 			glavniIzbornik();
 			
@@ -106,13 +115,15 @@ public class Start {
 		System.out.println("3. Statistika");
 		System.out.println("4. Ekipe");
 		System.out.println("5. Utakmica");
-		System.out.println("6. Izlaz iz programa");
+		System.out.println("6. Vracanje na pocetni ekran");
+		System.out.println("7. Izlaz iz programa");
+		
 		ucitajGlavnuAkciju();
 		
 	}
 	
 	private void ucitajGlavnuAkciju() { 
-		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 6)) {
+		switch(Ulaz.ucitajCijeliBroj("Odaberi broj: ", "Nisi unio cijeli broj", 1, 7)) {
 		case 1 -> igraciIzbornik();
 
 		case 2 -> trenerIzbornik();
@@ -122,15 +133,23 @@ public class Start {
 		case 4 -> ekipaIzbornik();
 			
 		case 5 -> utakmicaIzbornik();
+		
+		case 6 -> pocetniEkran();
 			
-		case 6 ->  { 
-					String izlaz = Ulaz.ucitajIzlaz("jesi siguran da hoces izaci", "greska");
+		case 7 ->  { 
+					/*String izlaz = Ulaz.ucitajIzlaz("jesi siguran da hoces izaci", "greska");
 					System.out.println("");
 					if(izlaz.trim().toLowerCase().equals("da")) {
 						 System.exit(0);
 					} else {
 						glavniIzbornik();
-					}
+					}*/
+				if(Ulaz.daIliNe("Jesi li siguran da zelis izaci iz programa ako jesi upisi da u suprotnom ne", "")) {
+					 System.exit(0);
+					
+				}else {
+					glavniIzbornik();
+				}
 				}
 		}
 	}
