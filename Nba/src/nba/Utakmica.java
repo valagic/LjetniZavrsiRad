@@ -4,13 +4,14 @@ import java.util.Date;
 
 public class Utakmica {
 
-	// kod klase Utakmica -> potrebno jos napraviti rezultat prve ekipe i rezultat druge ekipe, za sada je napravljeno da samo jedan broj mogu unijeti
 	private Date datumPocetka;
 	private String domacaMomcad;
 	private String gostujucaMomcad;
-	private String nazivDvorane;
-	private int rezultat;
+	private String nazivDvoraneUKojojSeIgraUtakmica;
+	private int rezultatDomaceMomcadi;
+	private int rezultatGostujuceMomcadi;
 	
+
 	public Date getDatumPocetka() {
 		return datumPocetka;
 	}
@@ -29,19 +30,24 @@ public class Utakmica {
 	public void setGostujucaMomcad(String gostujucaMomcad) {
 		this.gostujucaMomcad = gostujucaMomcad;
 	}
-	public String getNazivDvorane() {
-		return nazivDvorane;
+	public String getNazivDvoraneUKojojSeIgraUtakmica() {
+		return nazivDvoraneUKojojSeIgraUtakmica;
 	}
-	public void setNazivDvorane(String nazivDvorane) {
-		this.nazivDvorane = nazivDvorane;
+	public void setNazivDvoraneUKojojSeIgraUtakmica(String nazivDvoraneUKojojSeIgraUtakmica) {
+		this.nazivDvoraneUKojojSeIgraUtakmica = nazivDvoraneUKojojSeIgraUtakmica;
 	}
-	public int getRezultat() {
-		return rezultat;
+	public int getRezultatDomaceMomcadi() {
+		return rezultatDomaceMomcadi;
 	}
-	public void setRezultat(int rezultat) {
-		this.rezultat = rezultat;
+	public void setRezultatDomaceMomcadi(int rezultatDomaceMomcadi) {
+		this.rezultatDomaceMomcadi = rezultatDomaceMomcadi;
 	}
-	
+	public int getRezultatGostujuceMomcadi() {
+		return rezultatGostujuceMomcadi;
+	}
+	public void setRezultatGostujuceMomcadi(int rezultatGostujuceMomcadi) {
+		this.rezultatGostujuceMomcadi = rezultatGostujuceMomcadi;
+	}
 	
 	
 }

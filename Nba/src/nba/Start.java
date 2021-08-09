@@ -209,8 +209,9 @@ public class Start {
 		u.setDatumPocetka(Ulaz.ucitajDatum("Unesi datum početka: "));
 		u.setDomacaMomcad(Ulaz.ucitajString("Naziv domace momcadi: ", "Nisi unio dobar naziv"));
 		u.setGostujucaMomcad(Ulaz.ucitajString("Naziv gostujuce momcadi: ", "Nisi unio dobar naziv"));
-		u.setNazivDvorane(Ulaz.ucitajString("Unesi naziv dvorane: ", "Nisi unio dobar naziv"));
-		u.setRezultat(Ulaz.ucitajCijeliBroj("Unesi broj poena ekipa: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		u.setNazivDvoraneUKojojSeIgraUtakmica(Ulaz.ucitajString("Unesi naziv dvorane: ", "Nisi unio dobar naziv"));
+		u.setRezultatDomaceMomcadi(Ulaz.ucitajCijeliBroj("Unesi broj poena ekipa: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
+		u.setRezultatGostujuceMomcadi(Ulaz.ucitajCijeliBroj("Unesi broj poena ekipa: ", "Nisi unio dobar broj", 0, Integer.MAX_VALUE));
 		return u;
 	}
 
@@ -229,8 +230,8 @@ public class Start {
 		for(int i = 0; i < utakmice.size(); i++) {
 			u = utakmice.get(i);
 			System.out.println((i+1) + ". \nDatum pocetka utakmice je: " + u.getDatumPocetka() + "\nIme domace momcadi:  " +  u.getDomacaMomcad() + "\nIme gostujuce momcadi " 
-			+ u.getGostujucaMomcad() + "\nNaziv dvorane: " + u.getNazivDvorane()
-			+ "\nRezultat: " + u.getRezultat());
+			+ u.getGostujucaMomcad() + "\nNaziv dvorane: " + u.getNazivDvoraneUKojojSeIgraUtakmica()
+			+ "\nRezultat: " + u.getRezultatDomaceMomcadi() + " - " + u.getRezultatGostujuceMomcadi());
 			}
 		}
 		
@@ -536,6 +537,14 @@ public class Start {
 		ii = igracPostaviVrijednost(ii);
 		igraci.add(ii);
 		igraciIzbornik();
+		/*		
+		String imeIgraca = Ulaz.ucitajString("Unesi ime kosarkasa: ", "Nisi unio ime");
+		String prezimeIgraca = Ulaz.ucitajString("Unesi prezime kosarkasa: ", "Nisi unio prezime");
+		String nazivEkipe = Ulaz.ucitajString("Unesi ime ekipe za koju igra: ", "Nisi unio ime ekipe");
+		Igrac noviIgrac = new Igrac(imeIgraca, prezimeIgraca, nazivEkipe);
+		igraci.add(noviIgrac);
+		igraciIzbornik();
+		*/
 	}
 
 	private Igrac igracPostaviVrijednost(Igrac ii) {

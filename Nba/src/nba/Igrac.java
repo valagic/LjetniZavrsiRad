@@ -2,11 +2,10 @@ package nba;
 
 public class Igrac{
 
-
 	private String ime;
 	private String prezime;
 	private String nazivEkipe;
-	
+
 	public String getIme() {
 		return ime;
 	}
@@ -26,6 +25,5 @@ public class Igrac{
 		this.nazivEkipe = nazivEkipe;
 	}
 
-	
 }
 

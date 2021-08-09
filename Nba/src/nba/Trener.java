@@ -5,7 +5,7 @@ public class Trener {
 	private String ime;
 	private String prezime;
 	private String nazivEkipe;
-	
+
 	public String getIme() {
 		return ime;
 	}

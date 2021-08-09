@@ -4,6 +4,7 @@ public class Ekipa {
 
 	private String naziv;
 
+
 	public String getNaziv() {
 		return naziv;
 	}
