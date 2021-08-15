@@ -67,16 +67,7 @@ public class Start {
 		System.out.println("");
 		System.out.println("Aplikaciju je napravio Vedran Alagić");
 		System.out.println("");
-		/*String informacije = Ulaz.ucitajInformacije("Ako zelis saznati vise o programu upisi da: ", "Nisi upisao da");
-		if(informacije.equals("da")) {
-			System.out.println("");
-			glavniIzbornik();
-			
-		}else {
-			System.out.println("");
-			pocetniEkran();
-		}
-		*/
+
 		if(Ulaz.daIliNe("Ako zelite saznati vise o programu upisite da, u suprotnom ne", "")) {
 			System.out.println("");
 			glavniIzbornik();
@@ -137,13 +128,7 @@ public class Start {
 		case 6 -> pocetniEkran();
 			
 		case 7 ->  { 
-					/*String izlaz = Ulaz.ucitajIzlaz("jesi siguran da hoces izaci", "greska");
-					System.out.println("");
-					if(izlaz.trim().toLowerCase().equals("da")) {
-						 System.exit(0);
-					} else {
-						glavniIzbornik();
-					}*/
+
 				if(Ulaz.daIliNe("Jesi li siguran da zelis izaci iz programa ako jesi upisi da u suprotnom ne", "")) {
 					 System.exit(0);
 					
@@ -537,14 +522,7 @@ public class Start {
 		ii = igracPostaviVrijednost(ii);
 		igraci.add(ii);
 		igraciIzbornik();
-		/*		
-		String imeIgraca = Ulaz.ucitajString("Unesi ime kosarkasa: ", "Nisi unio ime");
-		String prezimeIgraca = Ulaz.ucitajString("Unesi prezime kosarkasa: ", "Nisi unio prezime");
-		String nazivEkipe = Ulaz.ucitajString("Unesi ime ekipe za koju igra: ", "Nisi unio ime ekipe");
-		Igrac noviIgrac = new Igrac(imeIgraca, prezimeIgraca, nazivEkipe);
-		igraci.add(noviIgrac);
-		igraciIzbornik();
-		*/
+
 	}
 
 	private Igrac igracPostaviVrijednost(Igrac ii) {
