@@ -6,6 +6,16 @@ public class Igrac{
 	private String prezime;
 	private String nazivEkipe;
 
+	/*public Igrac() {
+		
+	}
+	
+	public Igrac(String ime, String prezime, String nazivEkipe) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.nazivEkipe = nazivEkipe;
+	}*/
 	public String getIme() {
 		return ime;
 	}
@@ -25,5 +35,10 @@ public class Igrac{
 		this.nazivEkipe = nazivEkipe;
 	}
 
+	/*@Override
+	public String toString() {
+		
+		return super.toString();
+	}*/
 }
 

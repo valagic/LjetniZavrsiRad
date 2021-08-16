@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 import nba.Ulaz;
 
 
@@ -507,6 +508,26 @@ public class Start {
 		igraciIzbornik();
 	}
 	
+	/*private void igracPromjena() {
+		igracStavke("Trenutno dostupno u aplikaciji");
+		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberi redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
+				igraci.size());
+		Igrac igracZaPromjenu = igraci.get(redniBroj - 1);
+		igracZaPromjenu = igracUnosNovog();
+		igraci.set(redniBroj - 1, igracZaPromjenu);
+		igraciIzbornik();
+	}
+
+	private Igrac igracUnosNovog() {
+		Igrac ig= new Igrac();
+		ig.setIme(Ulaz.ucitajString("UNesi ime", "Unesi prezime"));
+		ig.setPrezime(Ulaz.ucitajString("UNesi ime", "Unesi prezime"));
+		ig.setNazivEkipe(Ulaz.ucitajString("UNesi ime", "Unesi prezime"));
+		igraci.add(ig);
+		igraciIzbornik();
+		return ig;
+
+	}*/
 	private void igracPromjena() {
 		igracStavke("Trenutno dostupno u aplikaciji");
 		int redniBroj = Ulaz.ucitajCijeliBroj("Odaberi redni broj za promjenu: ", "Niste unijeli cijeli broj", 1,
@@ -518,18 +539,18 @@ public class Start {
 	}
 
 	private void igracUnosNovog() {
-		Igrac ii= new Igrac();
-		ii = igracPostaviVrijednost(ii);
-		igraci.add(ii);
+		Igrac ig= new Igrac();
+		ig = igracPostaviVrijednost(ig);
+		igraci.add(ig);
 		igraciIzbornik();
 
 	}
 
-	private Igrac igracPostaviVrijednost(Igrac ii) {
-		ii.setIme(Ulaz.ucitajString("Unesi ime kosarkasa: ", "Nisi unio ime"));
-		ii.setPrezime(Ulaz.ucitajString("Unesi prezime kosarkasa: ", "Nisi unio prezime"));
-		ii.setNazivEkipe(Ulaz.ucitajString("Unesi ime ekipe za koju igra: ", "Nisi unio ime ekipe"));
-		return ii;
+	private Igrac igracPostaviVrijednost(Igrac ig) {
+		ig.setIme(Ulaz.ucitajString("Unesi ime kosarkasa: ", "Nisi unio ime"));
+		ig.setPrezime(Ulaz.ucitajString("Unesi prezime kosarkasa: ", "Nisi unio prezime"));
+		ig.setNazivEkipe(Ulaz.ucitajString("Unesi ime ekipe za koju igra: ", "Nisi unio ime ekipe"));
+		return ig;
 	}
 
 	private void igracPregled() {
@@ -542,18 +563,14 @@ public class Start {
 		if(igraci.isEmpty()) {
 			System.out.println("Nema unesenih igraca");
 		}else {
-			Igrac ii;
+			Igrac ig;
 			for(int i = 0 ;i < igraci.size();i++) {
-				ii = igraci.get(i);
-				System.out.println((i+1) + ". \nIme igraca: " + ii.getIme() + "\nPrezime igraca: " + ii.getPrezime() +  "\nNaziv ekipe za koju igra: " + ii.getNazivEkipe());
+				ig = igraci.get(i);
+				System.out.println((i+1) + ". \nIme igraca: " + ig.getIme() + "\nPrezime igraca: " + ig.getPrezime() +  "\nNaziv ekipe za koju igra: " + ig.getNazivEkipe());
 			}
 		}
 		
 	}
-
-
-
-
 
 	public static void main(String[] args) {
 		new Start();
